@@ -66,19 +66,6 @@ comp = {
           .reduce(function(res, inc){return _.merge(res, inc)}, {}),
           res => res && alert(_.get(res, 'metadata.message'))
         )
-        // google.script.run
-        // .withSuccessHandler(function(res){
-        //   alert(_.get(res, 'metadata.message'))
-        // })
-        // .bpjsCall(_.merge(creds(), {
-        //   method: 'post',
-        //   url: [base_url, 'bed/create/', kode_ppk].join(''),
-        //   payload: JSON.stringify(
-        //     _.filter(e.target, function(i){return i.name})
-        //     .map(function(field){return _.fromPairs([[field.name, field.value]])})
-        //     .reduce(function(res, inc){return _.merge(res, inc)}, {})
-        //   )
-        // }))
       }},
       fieldsRuangan.map(function(field){return m('.field',
         m('.label', _.startCase(field)),
@@ -101,16 +88,6 @@ comp = {
             m.redraw()
           ]
         )
-        
-        // google.script.run
-        // .withSuccessHandler(function(res){if(res){
-        //   state.ketersediaan_kamar = res.response.list;
-        //   m.redraw()
-        // }})
-        // .bpjsCall(_.merge(creds(), {
-        //   method: 'get',
-        //   url: [base_url, 'bed/read/', kode_ppk, '/1/100'].join('')
-        // }))
       }},
       m('thead', m('tr', fieldsRuangan.map(function(i){return m('th', _.startCase(i))}))),
       m('tbody', state.ketersediaan_kamar && state.ketersediaan_kamar.map(function(kamar){
@@ -132,7 +109,7 @@ comp = {
     m('form',
       {onsubmit: function(e){
         e.preventDefault();
-        fetch(
+        poster(
           '/kamar/hapus_ruangan',
           {
             kodekelas: e.target[0].value,
