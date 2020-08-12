@@ -20,7 +20,7 @@ randomId = () =>
   ).join(''),
 
 dbCall = action => mongoDB.MongoClient.connect(
-  process.env.atlas,
+  process.env.mongo,
   {useNewUrlParser: true, useUnifiedTopology: true},
   (err, client) => [action(client.db(process.env.dbname))]
 ),
