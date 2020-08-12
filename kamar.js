@@ -22,7 +22,7 @@ signature = () => encrypt(
 ),
 
 dbCall = action => mongoDB.MongoClient.connect(
-  process.env.atlas,
+  process.env.mongo,
   {useNewUrlParser: true, useUnifiedTopology: true},
   (err, client) => err ? console.log(err)
     : action(client.db(process.env.dbname))

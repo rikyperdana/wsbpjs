@@ -5,6 +5,7 @@ kamar = require('./kamar')['kamar'],
 
 app = express()
 .use((req, res, next) => [
+  // karena secara default bpjs api tidak memberikannya
   req.headers['content-type'] = 'application/json',
   next()
 ])
