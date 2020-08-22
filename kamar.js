@@ -1,4 +1,6 @@
-var mongoDB = require("mongodb"),
+var
+dotenv = require('dotenv').config(),
+mongoDB = require("mongodb"),
 _ = require('lodash'),
 CronJob = require('cron').CronJob,
 CryptoJS = require('crypto-js'),
