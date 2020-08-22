@@ -1,4 +1,6 @@
-var express = require('express'),
+var
+dotenv = require('dotenv').config(),
+express = require('express'),
 bodyParser = require('body-parser'),
 fkrtl = require('./fkrtl')['fkrtl'],
 kamar = require('./kamar')['kamar'],

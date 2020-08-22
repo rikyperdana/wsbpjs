@@ -1,5 +1,6 @@
 
 var
+dotenv = require('dotenv').config(),
 mongoDB = require("mongodb"),
 _ = require('lodash'),
 moment = require('moment'),
