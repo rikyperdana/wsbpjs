@@ -14,4 +14,6 @@ app = express()
 .post('/kamar/:api', kamar)
 .use(express.static('public'))
 
-var server = require('http').Server(app).listen(3000)
+var server = require('http').Server(app).listen(
+  process.env.port || 3000
+)

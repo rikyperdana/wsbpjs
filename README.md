@@ -15,6 +15,7 @@ Lakukan penyesuaian tarif tindakan di `tindakan.js` sesuai dengan tarif rumah sa
 
 Isikan variabel berikut ke `.env`
 ```
+port=3100 // port yg akan digunakan di localhost atau server
 mongo=  // alamat database yang digunakan oleh aplikasi SIMRS.dev
 dbname=  // nama database yang digunakan oleh aplikasi SIMRS.dev
 username=  // username untuk digunakan oleh user BPJS, bebas
@@ -26,3 +27,17 @@ kode_ppk=  // dapatkan dari BPJS setempat
 base_url_prod=  // isikan variabel ini dengan alamat server production yang disediakan BPJS
 stage=development  // ganti ke 'production' untuk pindah ke mode produksi
 ```
+
+# Cara menjalankan
+`node index.js`
+Buka http://localhost:3100
+
+# Cara mengisi daftar tindakan
+Ctrl-Shift-J pada aplikasi Simrs, masukkan perintah ini:
+```
+  db.references.toArray(array => console.log(
+    array.map(i => JSON.stringify(_.pick(i, ['_id', 'nama']))).join(',')
+  ))
+```
+Tekan Enter, dan klik tombol Copy di bawah.
+Salin secara utuh ke `var tindakan = [disini]` di file `tindakan.js`
