@@ -132,13 +132,24 @@ comp = {
     m('.navbar-brand',
       m('a.navbar-item', 'BPJS Bridge'),
       m('a.navbar-burger.burger',
-        {role: 'button', 'aria-label': 'menu', 'aria-expanded': 'false', 'data-target': 'navbarBasicExample'},
+        {
+          class: state.burgerMenu && 'is-active',
+          role: 'button', 'aria-label': 'menu', 'aria-expanded': 'false',
+          onclick: () => [state.burgerMenu = !state.burgerMenu, m.redraw()]
+        },
         _.range(3).map(function(i){return m('span', {'aria-hidden': true})})
       )
     ),
-    m('.navbar-menu', {id: 'navbarBasicExample'},
+    m('.navbar-menu',
+      {class: state.burgerMenu && 'is-active'},
       m('.navbar-start', menus.map(function(i){
-        return m('a.navbar-item', {onclick: function(){state.route = i}}, _.startCase(i))
+        return m('a.navbar-item',
+          {onclick: function(){[
+            _.assign(state, {route: i, burgerMenu: null}),
+            m.redraw()
+          ]}},
+          _.startCase(i)
+        )
       })),
       m('.navbar-end')
     ),
@@ -159,5 +170,8 @@ comp = {
 };
 
 m.mount(document.body, {view: function(){return m('div',
-  comp.navbar(), m('.container', m('br'), comp[state.route || 'referensi_kelas']())
+  comp.navbar(),
+  m('section.section', m('.container', m('br'),
+    comp[state.route || 'referensi_kelas']()
+  ))
 )}})
