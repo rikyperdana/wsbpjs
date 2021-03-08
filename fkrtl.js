@@ -36,8 +36,7 @@ errorResponder = (cb, text) => cb.send(response({
 
 validityCheck = array => array.filter(i => !i[0]).map(i => i[1]),
 
-jadwalOperasi = (pasien, rawat, item) =>
-({
+jadwalOperasi = (pasien, rawat, item) => ({
   kodebooking: item.idtindakan.substring(0, 8),
   tanggaloperasi: moment(item.jadwal).format('YYYY-MM-DD'),
   jenistindakan: tindakan.find(
