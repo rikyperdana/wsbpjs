@@ -18,7 +18,7 @@
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "mongodb": "^3.5.9",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {},
